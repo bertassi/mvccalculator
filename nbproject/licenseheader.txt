@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix} Swing Calculator
+${licensePrefix} Developed by Bertassi
+${licensePrefix} Copyright 2018 All Rights Reserved
+<#if licenseLast??>
+${licenseLast}
+</#if>
