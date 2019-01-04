@@ -5,24 +5,26 @@
  */
 package br.com.bertassi.mvccalculator.gui;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /**
  *
  * @author eduardo
  */
-public class CalculatorGUI extends JFrame
+public class OldCalculatorGUI extends JFrame
 {
     private String imagePath;
     
     /**
      * Creates new form CalculatorGUI
      */
-    public CalculatorGUI ()
+    public OldCalculatorGUI ()
     {
         this.setImagePath();
         this.initComponents();
@@ -198,7 +200,7 @@ public class CalculatorGUI extends JFrame
         jTextFieldScreen.setFont(new java.awt.Font("Arial", 2, 30)); // NOI18N
         jTextFieldScreen.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldScreen.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextFieldScreen.setText("0123456789012345.6");
+        jTextFieldScreen.setText("123456789,0");
         jTextFieldScreen.setToolTipText("");
         jTextFieldScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldScreen.setMargin(new java.awt.Insets(0, 0, 0, -100));
@@ -541,8 +543,8 @@ public class CalculatorGUI extends JFrame
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItemAboutActionPerformed
     {//GEN-HEADEREND:event_jMenuItemAboutActionPerformed
         // O fundo fica completamente branco
-        //UIManager.getDefaults().put("OptionPane.background",new Color(255,255,255));
-        //UIManager.put ("Panel.background", new Color(255,255,255));
+        UIManager.getDefaults().put("OptionPane.background",new Color(255,255,255));
+        UIManager.put ("Panel.background", new Color(255,255,255));
         
         JOptionPane.showMessageDialog(this,new AboutGUI(),null,JOptionPane.PLAIN_MESSAGE);         
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
@@ -575,8 +577,8 @@ public class CalculatorGUI extends JFrame
     private javax.swing.JTextField jTextFieldScreen;
     // End of variables declaration//GEN-END:variables
 
-//    public static void main (String args[])
-//    {
-//        CalculatorGUI calculatorView = new CalculatorGUI();
-//    }  
+    public static void main (String args[])
+    {
+        OldCalculatorGUI calculatorView = new OldCalculatorGUI();
+    }  
 }

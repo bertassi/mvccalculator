@@ -5,9 +5,9 @@
  */
 package br.com.bertassi.mvccalculator.controller;
 
+import br.com.bertassi.mvccalculator.gui.NewCalculatorGUI;
 import java.awt.event.ActionListener;
 import br.com.bertassi.mvccalculator.model.CalculatorModel;
-import br.com.bertassi.mvccalculator.gui.CalculatorGUI;
 import br.com.bertassi.mvccalculator.model.ButtonID;
 import br.com.bertassi.mvccalculator.model.OperationID;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class CalculatorController
 {
     private final CalculatorModel model;
-    private final CalculatorGUI view;
+    private final NewCalculatorGUI view;
     private double acumulator;
     private double register;
     private int estadoAtual;
@@ -30,7 +30,7 @@ public class CalculatorController
     private int estadoAnterior;
     private int lastOperation;
 
-    public CalculatorController (CalculatorModel calculatorModel, CalculatorGUI calculatorView)
+    public CalculatorController (CalculatorModel calculatorModel, NewCalculatorGUI calculatorView)
     {
         this.model = calculatorModel;
         this.view = calculatorView;
@@ -42,7 +42,7 @@ public class CalculatorController
         
         System.out.println("\n\n");
         System.out.println("------------ Iniciando o Calculator Controller ------------");
-        System.out.println("Tela = " + this.view.getJTextFieldScreen().getText());
+        System.out.println("Tela = " + this.view.getJLabelVisor().getText());
         System.out.println("Acumulator Atual = " + this.acumulator);
         System.out.println("Acumulator Anterior = " + this.lastAcumulator);
         System.out.println("Registrador Atual = " + this.register);
@@ -221,7 +221,7 @@ public class CalculatorController
             }
         });
 
-        this.view.getJButtonDot().addActionListener(new ActionListener()
+        this.view.getJButtonComma().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed (ActionEvent evt)
@@ -231,7 +231,7 @@ public class CalculatorController
             }
         });
         
-        this.view.getJButtonAdd().addActionListener(new ActionListener()
+        this.view.getJButtonSum().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed (ActionEvent evt)
@@ -241,7 +241,7 @@ public class CalculatorController
             }
         });   
 
-        this.view.getJButtonSubtract().addActionListener(new ActionListener()
+        this.view.getJButtonSubtraction().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed (ActionEvent evt)
@@ -251,7 +251,7 @@ public class CalculatorController
             }
         });   
 
-        this.view.getJButtonMultiply().addActionListener(new ActionListener()
+        this.view.getJButtonMultiplication().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed (ActionEvent evt)
@@ -261,7 +261,7 @@ public class CalculatorController
             }
         });   
 
-        this.view.getJButtonDivide().addActionListener(new ActionListener()
+        this.view.getJButtonDivision().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed (ActionEvent evt)
@@ -315,59 +315,59 @@ public class CalculatorController
     // <editor-fold defaultstate="collapsed" desc="Action Performed">
     private void buttonActionPerformed (ActionEvent evt, int id)
     {    
-        if (this.view.getJTextFieldScreen().getText().equals("0") && this.append == false && this.getOperation(this.operation) == "IDLE")
+        if (this.view.getJLabelVisor().getText().equals("0") && this.append == false && this.getOperation(this.operation) == "IDLE")
         {
             this.append = true;
                     
             switch (id)
             {
                 case ButtonID.ZERO:
-                    this.view.setJTextFieldScreen("0");
+                    this.view.setJLabelVisor("0");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("0"));
                     break;
                 case ButtonID.ONE:
-                    this.view.setJTextFieldScreen("1");
+                    this.view.setJLabelVisor("1");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("1"));
                     break;
                 case ButtonID.TWO:
-                    this.view.setJTextFieldScreen("2");
+                    this.view.setJLabelVisor("2");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("2"));
                     break;
                 case ButtonID.THREE:
-                    this.view.setJTextFieldScreen("3");
+                    this.view.setJLabelVisor("3");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("3"));
                     break;
                 case ButtonID.FOUR:
-                    this.view.setJTextFieldScreen("4");
+                    this.view.setJLabelVisor("4");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("4"));
                     break;
                 case ButtonID.FIVE:
-                    this.view.setJTextFieldScreen("5");
+                    this.view.setJLabelVisor("5");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("5"));
                     break;
                 case ButtonID.SIX:
-                    this.view.setJTextFieldScreen("6");
+                    this.view.setJLabelVisor("6");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("6"));
                     break;
                 case ButtonID.SEVEN:
-                    this.view.setJTextFieldScreen("7");
+                    this.view.setJLabelVisor("7");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("7"));
                     break;
                 case ButtonID.EIGHT:
-                    this.view.setJTextFieldScreen("8");
+                    this.view.setJLabelVisor("8");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("8"));
                     break;
                 case ButtonID.NINE:
-                    this.view.setJTextFieldScreen("9");
+                    this.view.setJLabelVisor("9");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("9"));
                     break;
@@ -376,64 +376,64 @@ public class CalculatorController
                     break;
             }
         }
-        else if (!this.view.getJTextFieldScreen().getText().equals("0") && this.append == true && this.getOperation(this.operation) == "IDLE")
+        else if (!this.view.getJLabelVisor().getText().equals("0") && this.append == true && this.getOperation(this.operation) == "IDLE")
         {
-            if (this.view.getJTextFieldScreen().getText().length() < 18 )
+            if (this.view.getJLabelVisor().getText().length() < 18 )
             {
                 switch (id)
                 {
                     case ButtonID.ZERO:
                         appendScreenValue("0");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.ONE:
                         appendScreenValue("1");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.TWO:
                         appendScreenValue("2");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.THREE:
                         appendScreenValue("3");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.FOUR:
                         appendScreenValue("4");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.FIVE:
                         appendScreenValue("5");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.SIX:
                         appendScreenValue("6");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.SEVEN:
                         appendScreenValue("7");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.EIGHT:
                         appendScreenValue("8");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.NINE:
                         appendScreenValue("9");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.DOT:
-                        if (!this.view.getJTextFieldScreen().getText().contains("."))
+                        if (!this.view.getJLabelVisor().getText().contains("."))
                         {
                             appendScreenValue(".");
                         }
@@ -441,59 +441,59 @@ public class CalculatorController
                 }
             }
         } 
-        if (!this.view.getJTextFieldScreen().getText().equals("0") && this.append == false && this.getOperation(this.operation) != "IDLE")
+        if (!this.view.getJLabelVisor().getText().equals("0") && this.append == false && this.getOperation(this.operation) != "IDLE")
         {
             this.append = true;
             
             switch (id)
             {
                 case ButtonID.ZERO:
-                    this.view.setJTextFieldScreen("0");
+                    this.view.setJLabelVisor("0");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("0"));                    
                     break;
                 case ButtonID.ONE:
-                    this.view.setJTextFieldScreen("1");
+                    this.view.setJLabelVisor("1");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("1"));
                     break;
                 case ButtonID.TWO:
-                    this.view.setJTextFieldScreen("2");
+                    this.view.setJLabelVisor("2");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("2"));
                     break;
                 case ButtonID.THREE:
-                    this.view.setJTextFieldScreen("3");
+                    this.view.setJLabelVisor("3");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("3"));
                     break;
                 case ButtonID.FOUR:
-                    this.view.setJTextFieldScreen("4");
+                    this.view.setJLabelVisor("4");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("4"));
                     break;
                 case ButtonID.FIVE:
-                    this.view.setJTextFieldScreen("5");
+                    this.view.setJLabelVisor("5");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("5"));
                     break;
                 case ButtonID.SIX:
-                    this.view.setJTextFieldScreen("6");
+                    this.view.setJLabelVisor("6");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("6"));
                     break;
                 case ButtonID.SEVEN:
-                    this.view.setJTextFieldScreen("7");
+                    this.view.setJLabelVisor("7");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("7"));
                     break;
                 case ButtonID.EIGHT:
-                    this.view.setJTextFieldScreen("8");
+                    this.view.setJLabelVisor("8");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("8"));
                     break;
                 case ButtonID.NINE:
-                    this.view.setJTextFieldScreen("9");
+                    this.view.setJLabelVisor("9");
                     this.lastAcumulator = this.acumulator;
                     this.setAcumulator(Double.parseDouble("9"));
                     break;
@@ -502,64 +502,64 @@ public class CalculatorController
                     break;
             }
         }
-        else if (!this.view.getJTextFieldScreen().getText().equals("0") && this.append == true && this.getOperation(this.operation) != "IDLE")
+        else if (!this.view.getJLabelVisor().getText().equals("0") && this.append == true && this.getOperation(this.operation) != "IDLE")
         {
-            if (this.view.getJTextFieldScreen().getText().length() < 18 )
+            if (this.view.getJLabelVisor().getText().length() < 18 )
             {
                 switch (id)
                 {
                     case ButtonID.ZERO:
                         appendScreenValue("0");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.ONE:
                         appendScreenValue("1");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.TWO:
                         appendScreenValue("2");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.THREE:
                         appendScreenValue("3");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.FOUR:
                         appendScreenValue("4");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.FIVE:
                         appendScreenValue("5");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.SIX:
                         appendScreenValue("6");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.SEVEN:
                         appendScreenValue("7");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.EIGHT:
                         appendScreenValue("8");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.NINE:
                         appendScreenValue("9");
                         this.lastAcumulator = this.acumulator;
-                        this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                        this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                         break;
                     case ButtonID.DOT:
-                        if (!this.view.getJTextFieldScreen().getText().contains("."))
+                        if (!this.view.getJLabelVisor().getText().contains("."))
                         {
                             appendScreenValue(".");
                         }
@@ -570,7 +570,7 @@ public class CalculatorController
         
         System.out.println("\n\n");
         System.out.println("------------ Button Action Performed ------------");
-        System.out.println("Tela = " + this.view.getJTextFieldScreen().getText());
+        System.out.println("Tela = " + this.view.getJLabelVisor().getText());
         System.out.println("Acumulator Atual = " + this.acumulator);
         System.out.println("Acumulator Anterior = " + this.lastAcumulator);
         System.out.println("Registrador Atual = " + this.register);
@@ -590,7 +590,7 @@ public class CalculatorController
         
         System.out.println("\n\n");
         System.out.println("------------ Entrou Operation Action Performed ------------");
-        System.out.println("Tela = " + this.view.getJTextFieldScreen().getText());
+        System.out.println("Tela = " + this.view.getJLabelVisor().getText());
         System.out.println("Acumulator Atual = " + this.acumulator);
         System.out.println("Acumulator Anterior = " + this.lastAcumulator);
         System.out.println("Registrador Atual = " + this.register);
@@ -714,7 +714,7 @@ public class CalculatorController
                 {
                     System.out.println("Entrando na operação CHANGESIGNAL...");
                     // Armazena o valor da tela no acumulador.
-                    this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                    this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                     // Faz o cálculo e coloca o resultado no acumuador.
                     this.setAcumulator(this.model.ChangeSignal(this.getAcumulator()));
                     // Apresenta o valor do acumulador na tela.
@@ -728,7 +728,7 @@ public class CalculatorController
                 {
                     System.out.println("Entrando na operação PERCENTAGE...");
                     // Armazena o valor da tela no acumulador.
-                    this.setAcumulator(Double.parseDouble(this.view.getJTextFieldScreen().getText()));
+                    this.setAcumulator(Double.parseDouble(this.view.getJLabelVisor().getText()));
                     // Faz o cálculo e coloca o resultado no acumuador.
                     this.setAcumulator(this.model.Percentage(this.getAcumulator()));
                     // Apresenta o valor do acumulador na tela.
@@ -739,7 +739,7 @@ public class CalculatorController
         }         
         System.out.println("\n\n");
         System.out.println("------------ Saiu do Operation Action Performed ------------");
-        System.out.println("Tela = " + this.view.getJTextFieldScreen().getText());
+        System.out.println("Tela = " + this.view.getJLabelVisor().getText());
         System.out.println("Acumulator Atual = " + this.acumulator);
         System.out.println("Acumulator Anterior = " + this.lastAcumulator);
         System.out.println("Registrador Atual = " + this.register);
@@ -755,11 +755,11 @@ public class CalculatorController
 
     public void appendScreenValue (String text)
     {
-        this.view.setJTextFieldScreen(this.view.getJTextFieldScreen().getText() + text);
+        this.view.setJLabelVisor(this.view.getJLabelVisor().getText() + text);
     }
 
     public void updateScreen (String text)
     {
-        this.view.setJTextFieldScreen(text);
+        this.view.setJLabelVisor(text);
     }    
 }
